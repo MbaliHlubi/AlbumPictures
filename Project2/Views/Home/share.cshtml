@@ -1,0 +1,81 @@
+﻿@model Project2.Domains.Images
+
+@{
+    ViewData["Title"] = "share";
+}
+
+<div class="container">
+    <h1 class="text-black-50 text-capitalize text-center">share Image</h1>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2" hiden>
+                @Html.DisplayNameFor(model => model.image_id)
+            </dt>
+            <dd class="col-sm-10" hiden>
+                @Html.DisplayFor(model => model.image_id)
+            </dd>
+            <dt class="col-sm-2">
+                <h2>Name: </h2>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.image_name)
+            </dd>
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.image_Geolocation)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.image_Geolocation)
+            </dd>
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.image_Tag)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.image_Tag)
+            </dd>
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.image_CapturedDate)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.image_CapturedDate)
+            </dd>
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.image_CapturedBy)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.image_CapturedBy)
+            </dd>
+            <dt class="col-sm-2">
+                <h2>Image: </h2>
+            </dt>
+            <dd class="col-sm-10">
+                @{
+                    var image = Model.image;
+                }
+                <img src="data:image/jpeg;base64,@System.Convert.ToBase64String(@image)" alt="image" width="100" height="100" />
+            </dd>
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.album)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.album)
+            </dd>
+
+            <form class="form-group" method="post" asp-action="Share">
+                <input type="text" value="@Model.image_id" name="image_id" />
+                
+                <dd class="form-group">
+                    <h2>Send to:</h2>
+                    <input type="text" placeholder="Enter username for the person you want to send to" name="user_to_send_id" class="form-control form-control-lg" />
+                </dd>
+                <div class="d-flex flex-wrap">
+                    <input type="submit" class="btn btn-success" value="Share" />
+                    <a asp-action="Index" class="btn btn-primary mx-auto">Back</a>
+                </div>
+            </form>
+        </dl>
+    </div>
+    
+        
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model Project2.Domains.Images
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <h1 class="text-black-50 text-capitalize text-center">Edit Image</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group" hidden>
+                    <label asp-for="image_id" class="control-label"></label>
+                    <input asp-for="image_id" class="form-control"/>
+                    <span asp-validation-for="image_id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Name: </label>
+                    <input asp-for="image_name" class="form-control" />
+                    <span asp-validation-for="image_name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Location: </label>
+                    <input asp-for="image_Geolocation" class="form-control" />
+                    <span asp-validation-for="image_Geolocation" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tag: </label>
+                    <input asp-for="image_Tag" class="form-control" />
+                    <span asp-validation-for="image_Tag" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <labelclass="control-label">Date Captured: </label>
+                    <input asp-for="image_CapturedDate" class="form-control" />
+                    <span asp-validation-for="image_CapturedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Captured By: </label>
+                    <input asp-for="image_CapturedBy" class="form-control" />
+                    <span asp-validation-for="image_CapturedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group" hidden>
+                    <label asp-for="image" class="control-label"></label>
+                    <input asp-for="image" class="form-control" />
+                    <span asp-validation-for="image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Album: </label>
+                    <input asp-for="album" class="form-control" />
+                    <span asp-validation-for="album" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-primary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

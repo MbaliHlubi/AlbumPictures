@@ -14,5 +14,7 @@ namespace Project2.Database
         public DbSet<People> people { get; set; }
         
         public DbSet<Images> images { get; set; }
+
+        public DbSet<SharedImages> shareImages { get; set; }
     }
 }

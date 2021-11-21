@@ -27,7 +27,11 @@ namespace Project2.Domains
         [Column("capturedBy")]
         public string image_CapturedBy{ get; set; }
 
-        [Column("capturedBy")]
+
+        [Column("image")]
+        public byte[] image{ get; set; }
+
+        [Column("album")]
         public string album { get; set; }
 
         [Column("person")]

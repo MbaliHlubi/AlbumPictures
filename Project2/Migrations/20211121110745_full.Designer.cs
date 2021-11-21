@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project2.Database;
 
 namespace Project2.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20211121110745_full")]
+    partial class full
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,51 +92,11 @@ namespace Project2.Migrations
                     b.ToTable("people");
                 });
 
-            modelBuilder.Entity("Project2.Domains.SharedImages", b =>
-                {
-                    b.Property<string>("sendTo")
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("sent_to");
-
-                    b.Property<Guid>("image_id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("person_id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("sendTo");
-
-                    b.HasIndex("image_id");
-
-                    b.HasIndex("person_id");
-
-                    b.ToTable("shareImages");
-                });
-
             modelBuilder.Entity("Project2.Domains.Images", b =>
                 {
                     b.HasOne("Project2.Domains.People", "person")
                         .WithMany()
                         .HasForeignKey("person_id");
-
-                    b.Navigation("person");
-                });
-
-            modelBuilder.Entity("Project2.Domains.SharedImages", b =>
-                {
-                    b.HasOne("Project2.Domains.Images", "image")
-                        .WithMany()
-                        .HasForeignKey("image_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project2.Domains.People", "person")
-                        .WithMany()
-                        .HasForeignKey("person_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("image");
 
                     b.Navigation("person");
                 });

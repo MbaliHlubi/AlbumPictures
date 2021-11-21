@@ -1,0 +1,39 @@
+﻿@model Project2.Domains.SharedImages
+
+@{
+    ViewData["Title"] = "DeleteShared";
+}
+
+<div class="container">
+    <h3>Are you sure you want to revoke access to this image?</h3>
+    <div>
+        <h4>SharedImages</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.person_id)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.person_id)
+            </dd>
+            <dt class="col-sm-2" hidden>
+                @Html.DisplayNameFor(model => model.image_id)
+            </dt>
+            <dd class="col-sm-10" hidden>
+                @Html.DisplayFor(model => model.image_id)
+            </dd>
+            <dt class="col-sm-2">
+                <h2>Image was send to:</h2>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sendTo)
+            </dd>
+        </dl>
+
+        <form asp-action="DeleteShared" class="d-flex flex-wrap" method="post">
+            <input type="submit" value="Yes Im Sure" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-primary mx-auto">No</a>
+        </form>
+    </div>
+
+</div>

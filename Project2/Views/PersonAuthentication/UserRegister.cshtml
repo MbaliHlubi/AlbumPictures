@@ -1,0 +1,81 @@
+﻿@model Project2.Domains.People
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserRegister</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand d-flex flex-wrap" href="#">
+            <img src="./lib/Images/picshare.png" width="150" height="75" class="d-inline-block align-top m-3" alt="">
+            <h1 class="text-white text-center align-content-center mx-auto">Picture Share</h1>
+        </a>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-black-50 text-center text-capitalize">User Registration</h1>
+        <form asp-action="UserRegister">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div hidden>
+                <label class="control-label"></label>
+                <input asp-for="person_id" class="form-control" />
+                <span asp-validation-for="person_id" class="text-danger"></span>
+            </div>
+            <div>
+                <label  class="control-label">Name: </label>
+                <input asp-for="person_name" required class="form-control" />
+                <span asp-validation-for="person_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Surname: </label>
+                <input asp-for="person_surname" required class="form-control form-control-lg" />
+                <span asp-validation-for="person_surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">User Name: </label>
+                <input asp-for="person_userName" type="email" required class="form-control" placeholder="Email address"/>
+                <span asp-validation-for="person_userName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Password: </label>
+                <input asp-for="password" required min="6" type="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            
+                
+            
+                
+            
+            <div class="form-group my-5 d-flex flex-wrap">
+                <input type="submit" value="Register" class="btn btn-success mx-5" />
+                <div class="dropdown mx-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        I agree to Terms and Conditions (Popia Act)
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <input type="checkbox" class="form-check-input" size="10" required id="exampleCheck1">
+                        <p class="text-wrap text-break dropdown-item">
+                            To promote the protection of personal information processed by public and private bodies; to introduce certain conditions so as to establish minimum requirements for the processing of personal information; to provide for the establishment of an Information Regulator to exercise certain powers and to perform certain duties and functions in terms of this Ad and the Promotion of Access to Information Act, 2000; to provide for the issuing of codes of conduct; to provide for the rights of persons regarding unsolicited electronic communications and automated decision making; to regulate the flow of personal information across the borders of the Republic; and to provide for matters connected therewith.
+                        </p>
+                    </div>
+                </div>
+                <a asp-action="UserLogin" class="btn btn-primary mx-auto">Login</a>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>

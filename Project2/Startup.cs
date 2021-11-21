@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Project2.Database;
 using System;
@@ -27,6 +29,11 @@ namespace Project2
         {
             services.AddControllersWithViews();
             services.AddDbContextPool<DBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("connectionproject2")));
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSession(so =>
+            {
+                so.IdleTimeout = TimeSpan.FromSeconds(60);
+            });
 
         }
 
@@ -54,7 +61,7 @@ namespace Project2
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=PersonAuthentication}/{action=UserLogin}/{id?}");
             });
         }
     }
